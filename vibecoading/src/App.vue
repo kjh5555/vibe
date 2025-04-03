@@ -1,11 +1,22 @@
 <script setup>
-import VideoChat from './components/VideoChat.vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import Navigation from './components/Navigation.vue'
+
+const router = useRouter()
+const isMenuOpen = ref(false)
+
+const navigation = [
+  { name: '홈', path: '/' },
+  { name: '화상 채팅', path: '/chat' },
+  { name: '설정', path: '/settings' }
+]
 </script>
 
 <template>
-  <div class="app">
-    <h1>WebRTC 화상 채팅</h1>
-    <VideoChat />
+  <div class="h-[80vh] bg-gray-100">
+    <Navigation />
+    <router-view></router-view>
   </div>
 </template>
 
